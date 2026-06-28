@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novaweb CI — Agence Web Professionnelle en Côte d'Ivoire</title>
+<meta name="description" content="Novaweb CI crée des sites web professionnels pour les entreprises ivoiriennes. Livraison en 7 jours. Paiement Orange Money et Wave accepté. Basé à Abidjan.">
+<style>
+:root {
+  --vert: #006644;
+  --vert-fonce: #003d2b;
+  --vert-vif: #00a86b;
+  --menthe: #7affdd;
+  --blanc: #ffffff;
+  --gris: #f5f9f7;
+  --texte: #0d1f17;
+  --sous-texte: #4a6b58;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: var(--texte); background: #fff; overflow-x: hidden; }
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(0,30,20,0.97); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(122,255,221,0.1);
+  padding: 0 24px; height: 66px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo svg { width: 32px; height: 32px; }
+.nav-logo-text { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+.nav-logo-text span { color: var(--menthe); }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--menthe); }
+.nav-cta {
+  background: var(--vert-vif); color: #fff; border: none;
+  padding: 10px 22px; border-radius: 8px; font-size: 13px;
+  font-weight: 700; cursor: pointer; text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--vert); }
+@media(max-width:640px){ .nav-links { display:none; } }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #001a10 0%, #002e1f 45%, #004a34 100%);
+  display: flex; align-items: center;
+  padding: 100px 24px 80px;
+  position: relative; overflow: hidden;
+}
+/* Grille décorative */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(122,255,221,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122,255,221,0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+/* Halo lumineux */
+.hero::after {
+  content: '';
+  position: absolute; top: -100px; right: -100px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,168,107,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(122,255,221,0.08); border: 1px solid rgba(122,255,221,0.2);
+  color: var(--menthe); border-radius: 24px;
+  padding: 7px 18px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.5px; margin-bottom: 32px;
+}
+.hero-badge .dot { width: 7px; height: 7px; background: var(--menthe); border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+
+.hero h1 {
+  font-size: clamp(32px, 7vw, 64px);
+  font-weight: 900; color: #fff;
+  line-height: 1.1; letter-spacing: -1.5px;
+  margin-bottom: 24px;
+}
+.hero h1 em { font-style: normal; color: var(--menthe); }
+
+.hero p {
+  font-size: clamp(15px, 2.5vw, 18px);
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75; max-width: 560px; margin-bottom: 44px;
+}
+
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 64px; }
+.btn-main {
+  background: var(--vert-vif); color: #fff;
+  padding: 15px 32px; border-radius: 10px;
+  font-size: 15px; font-weight: 700; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.2s; border: none; cursor: pointer;
+}
+.btn-main:hover { background: #008a58; transform: translateY(-2px); }
+.btn-outline {
+  background: transparent; color: rgba(255,255,255,0.85);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  padding: 15px 32px; border-radius: 10px;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.2s;
+}
+.btn-outline:hover { border-color: var(--menthe); color: var(--menthe); }
+
+.hero-stats {
+  display: flex; gap: 40px; flex-wrap: wrap;
+  padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.08);
+}
+.stat .n { font-size: 36px; font-weight: 900; color: #fff; line-height: 1; }
+.stat .l { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+
+/* ===== SECTION BASE ===== */
+.section { padding: 88px 24px; }
+.section-inner { max-width: 960px; margin: 0 auto; }
+.tag {
+  display: inline-block; background: #e6f7ee;
+  color: var(--vert); font-size: 11px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 5px 14px; border-radius: 20px; margin-bottom: 16px;
+}
+.section h2 {
+  font-size: clamp(26px, 5vw, 44px); font-weight: 900;
+  color: var(--texte); line-height: 1.15;
+  letter-spacing: -1px; margin-bottom: 16px;
+}
+.section h2 em { font-style: normal; color: var(--vert-vif); }
+.sub { font-size: 16px; color: var(--sous-texte); line-height: 1.75; max-width: 520px; margin-bottom: 56px; }
+
+/* ===== SERVICES ===== */
+.services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.service-card {
+  background: #fff; border: 1.5px solid #d4ede2;
+  border-radius: 16px; padding: 32px;
+  transition: all 0.25s;
+}
+.service-card:hover {
+  border-color: var(--vert-vif);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0,168,107,0.12);
+}
+.s-icon {
+  width: 54px; height: 54px; border-radius: 14px;
+  background: linear-gradient(135deg, #003d2b, #006644);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin-bottom: 20px;
+}
+.service-card h3 { font-size: 18px; font-weight: 800; color: var(--texte); margin-bottom: 10px; }
+.service-card p { font-size: 14px; color: var(--sous-texte); line-height: 1.65; margin-bottom: 16px; }
+.s-price { font-size: 13px; font-weight: 700; color: var(--vert-vif); }
+.s-delay { font-size: 12px; color: #aaa; margin-top: 4px; }
+
+/* ===== PROCESSUS ===== */
+.process-bg { background: var(--gris); }
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-top: 56px; position: relative; }
+.step {
+  background: #fff; border: 1.5px solid #d4ede2;
+  border-radius: 16px; padding: 28px 24px; text-align: center;
+}
+.step-num {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--vert-fonce), var(--vert));
+  color: var(--menthe); font-size: 16px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+}
+.step h4 { font-size: 15px; font-weight: 800; color: var(--texte); margin-bottom: 8px; }
+.step p { font-size: 13px; color: var(--sous-texte); line-height: 1.6; }
+
+/* ===== POURQUOI NOUS ===== */
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+.why-item {
+  background: #fff; border: 1.5px solid #d4ede2;
+  border-radius: 14px; padding: 28px;
+  display: flex; gap: 16px; align-items: flex-start;
+}
+.why-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: #e6f7ee; font-size: 22px;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.why-item h4 { font-size: 15px; font-weight: 800; color: var(--texte); margin-bottom: 6px; }
+.why-item p { font-size: 13px; color: var(--sous-texte); line-height: 1.6; }
+
+/* ===== TÉMOIGNAGES ===== */
+.testi-bg { background: linear-gradient(160deg, var(--vert-fonce) 0%, var(--vert) 100%); }
+.testi-bg .tag { background: rgba(122,255,221,0.12); color: var(--menthe); }
+.testi-bg h2 { color: #fff; }
+.testi-bg .sub { color: rgba(255,255,255,0.6); }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.testi-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px; padding: 28px;
+}
+.stars { color: #f5c842; font-size: 15px; margin-bottom: 14px; }
+.testi-text { font-size: 14px; color: rgba(255,255,255,0.8); line-height: 1.75; margin-bottom: 20px; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 42px; height: 42px; border-radius: 50%; background: rgba(122,255,221,0.15); border: 1.5px solid rgba(122,255,221,0.3); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.author-name { font-size: 14px; font-weight: 700; color: #fff; }
+.author-role { font-size: 12px; color: rgba(255,255,255,0.45); }
+
+/* ===== PAIEMENT ===== */
+.payment-section { background: var(--gris); }
+.pay-methods { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 48px; }
+.pay-card {
+  background: #fff; border: 1.5px solid #d4ede2;
+  border-radius: 16px; padding: 28px 36px;
+  text-align: center; min-width: 160px;
+  transition: all 0.2s;
+}
+.pay-card:hover { border-color: var(--vert-vif); transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,168,107,0.1); }
+.pay-card .pay-icon { font-size: 36px; margin-bottom: 12px; }
+.pay-card h4 { font-size: 15px; font-weight: 800; color: var(--texte); margin-bottom: 4px; }
+.pay-card p { font-size: 12px; color: var(--sous-texte); }
+
+/* ===== CTA CENTRAL ===== */
+.cta-section {
+  background: linear-gradient(135deg, var(--vert-fonce) 0%, #005038 100%);
+  padding: 96px 24px; text-align: center; position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(122,255,221,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(122,255,221,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.cta-section h2 { font-size: clamp(28px, 5vw, 48px); font-weight: 900; color: #fff; margin-bottom: 16px; letter-spacing: -1px; position: relative; }
+.cta-section p { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 40px; position: relative; }
+.cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
+
+/* ===== CONTACT ===== */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+@media(max-width:680px){ .contact-grid { grid-template-columns: 1fr; } }
+.contact-info h3 { font-size: 22px; font-weight: 900; color: var(--texte); margin-bottom: 14px; }
+.contact-info p { font-size: 15px; color: var(--sous-texte); line-height: 1.7; margin-bottom: 32px; }
+.c-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 22px; }
+.c-icon { width: 42px; height: 42px; background: #e6f7ee; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.c-text strong { display: block; font-size: 13px; font-weight: 700; color: var(--texte); margin-bottom: 2px; }
+.c-text span { font-size: 14px; color: var(--sous-texte); }
+
+.contact-form { background: var(--gris); border: 1.5px solid #d4ede2; border-radius: 20px; padding: 36px; }
+.contact-form h4 { font-size: 18px; font-weight: 900; color: var(--texte); margin-bottom: 24px; }
+.f-group { margin-bottom: 18px; }
+.f-group label { display: block; font-size: 12px; font-weight: 700; color: var(--texte); margin-bottom: 7px; letter-spacing: 0.3px; }
+.f-group input, .f-group select, .f-group textarea {
+  width: 100%; background: #fff; border: 1.5px solid #d4ede2;
+  border-radius: 10px; padding: 12px 16px; font-size: 14px;
+  color: var(--texte); outline: none; transition: border-color 0.2s;
+  font-family: inherit;
+}
+.f-group input:focus, .f-group select:focus, .f-group textarea:focus { border-color: var(--vert-vif); }
+.f-group textarea { resize: vertical; min-height: 100px; }
+.f-submit {
+  background: var(--vert-vif); color: #fff; border: none;
+  width: 100%; padding: 14px; border-radius: 10px;
+  font-size: 15px; font-weight: 700; cursor: pointer;
+  transition: background 0.2s; font-family: inherit;
+}
+.f-submit:hover { background: var(--vert); }
+
+/* ===== FOOTER ===== */
+footer { background: #001a10; padding: 56px 24px 28px; }
+.footer-inner { max-width: 960px; margin: 0 auto; }
+.footer-top { display: flex; gap: 48px; justify-content: space-between; flex-wrap: wrap; margin-bottom: 48px; }
+.f-brand .logo { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 12px; }
+.f-brand .logo span { color: var(--menthe); }
+.f-brand p { font-size: 13px; color: #3a6b56; line-height: 1.7; max-width: 260px; }
+.f-links h5 { font-size: 11px; font-weight: 700; color: var(--menthe); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 16px; }
+.f-links a { display: block; font-size: 13px; color: #3a6b56; text-decoration: none; margin-bottom: 10px; transition: color 0.2s; }
+.f-links a:hover { color: #fff; }
+.footer-bottom { border-top: 1px solid #0d2a1e; padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.footer-bottom p { font-size: 12px; color: #2a4a38; }
+.f-badge { font-size: 11px; color: var(--vert-vif); background: rgba(0,168,107,0.08); padding: 5px 14px; border-radius: 20px; border: 1px solid rgba(0,168,107,0.15); }
+
+/* Bouton flottant WhatsApp */
+.float-wa {
+  position: fixed; bottom: 24px; right: 24px; z-index: 99;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25d366; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; text-decoration: none;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.45);
+  transition: transform 0.2s;
+}
+.float-wa:hover { transform: scale(1.1); }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav>
+  <a class="nav-logo" href="#">
+    <svg viewBox="0 0 32 32" fill="none">
+      <polygon points="16,2 28,9 28,23 16,30 4,23 4,9" fill="none" stroke="#7affdd" stroke-width="1.2"/>
+      <circle cx="16" cy="16" r="7" fill="none" stroke="#7affdd" stroke-width="1.2"/>
+      <ellipse cx="16" cy="16" rx="3" ry="7" fill="none" stroke="#7affdd" stroke-width="0.9"/>
+      <line x1="9" y1="16" x2="23" y2="16" stroke="#7affdd" stroke-width="0.9"/>
+    </svg>
+    <span class="nav-logo-text">Nova<span>web</span> CI</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#processus">Comment ça marche</a>
+    <a href="#temoignages">Avis clients</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Démarrer mon site →</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <div class="dot"></div>
+      Agence web professionnelle · Abidjan, Côte d'Ivoire
+    </div>
+    <h1>Votre business mérite<br>d'être <em>visible en ligne</em></h1>
+    <p>Novaweb CI crée des sites web professionnels pour les entrepreneurs et PME ivoiriennes. Design soigné, Mobile Money intégré, livraison en 7 jours.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-main">🚀 Lancer mon site web</a>
+      <a href="#services" class="btn-outline">Voir nos offres</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="n">7j</div><div class="l">Délai de livraison</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">Mobile-friendly</div></div>
+      <div class="stat"><div class="n">0 FCFA</div><div class="l">Sans avance totale</div></div>
+      <div class="stat"><div class="n">CI</div><div class="l">Basé à Abidjan</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="tag">Nos offres</div>
+    <h2>Des sites web <em>qui convertissent</em><br>des visiteurs en clients</h2>
+    <p class="sub">Chaque site que nous créons est conçu pour attirer des clients, pas juste pour exister sur internet.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="s-icon">🏠</div>
+        <h3>Site Vitrine</h3>
+        <p>Présentation professionnelle de votre business. 5 pages, design sur mesure, formulaire de contact et bouton WhatsApp intégré.</p>
+        <div class="s-price">À partir de 150 000 FCFA</div>
+        <div class="s-delay">⏱ Livré en 5–7 jours</div>
+      </div>
+      <div class="service-card">
+        <div class="s-icon">💳</div>
+        <h3>Site + Paiement Mobile Money</h3>
+        <p>Votre site avec Orange Money et Wave directement intégrés. Vos clients paient en ligne sans quitter votre page.</p>
+        <div class="s-price">À partir de 220 000 FCFA</div>
+        <div class="s-delay">⏱ Livré en 7 jours</div>
+      </div>
+      <div class="service-card">
+        <div class="s-icon">🏪</div>
+        <h3>Boutique en ligne</h3>
+        <p>Vendez vos produits 24h/24. Catalogue produits, panier d'achat, paiement Orange Money et Wave, gestion des commandes.</p>
+        <div class="s-price">À partir de 400 000 FCFA</div>
+        <div class="s-delay">⏱ Livré en 10–14 jours</div>
+      </div>
+      <div class="service-card">
+        <div class="s-icon">🔧</div>
+        <h3>Maintenance mensuelle</h3>
+        <p>Mises à jour du contenu, sécurité, sauvegardes automatiques et support WhatsApp prioritaire inclus chaque mois.</p>
+        <div class="s-price">25 000 FCFA / mois</div>
+        <div class="s-delay">🔄 Engagement mensuel</div>
+      </div>
+      <div class="service-card">
+        <div class="s-icon">📍</div>
+        <h3>Référencement Google (SEO)</h3>
+        <p>Apparaissez en premier sur Google quand vos clients cherchent vos services à Abidjan. Optimisation locale incluse.</p>
+        <div class="s-price">50 000 FCFA / mois</div>
+        <div class="s-delay">📈 Résultats en 30–60 jours</div>
+      </div>
+      <div class="service-card">
+        <div class="s-icon">📱</div>
+        <h3>Pack Réseaux Sociaux</h3>
+        <p>Configuration professionnelle de vos pages Facebook, Instagram et WhatsApp Business avec votre charte graphique.</p>
+        <div class="s-price">80 000 FCFA</div>
+        <div class="s-delay">⏱ Livré en 3 jours</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESSUS ===== -->
+<section class="section process-bg" id="processus">
+  <div class="section-inner">
+    <div class="tag">Comment ça marche</div>
+    <h2>Votre site en ligne<br><em>en 4 étapes simples</em></h2>
+    <p class="sub">Un processus clair, sans surprise, avec vous impliqué à chaque étape.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>On discute de votre projet</h4>
+        <p>Vous nous contactez sur WhatsApp. On échange sur votre business, vos besoins et votre budget. Gratuit et sans engagement.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Vous envoyez vos infos</h4>
+        <p>Logo, couleurs, textes, photos — on vous guide avec un formulaire simple. Vous n'avez pas de logo ? On vous en crée un.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>On crée votre site</h4>
+        <p>Notre équipe conçoit votre site en 5 à 7 jours. Vous validez chaque étape et pouvez demander des modifications.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Mise en ligne & suivi</h4>
+        <p>Votre site est publié en ligne. On vous montre comment l'utiliser et on reste disponibles pour tout ajustement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POURQUOI NOUS ===== -->
+<section class="section" id="pourquoi">
+  <div class="section-inner">
+    <div class="tag">Pourquoi Novaweb CI</div>
+    <h2>L'agence qui comprend<br><em>le marché ivoirien</em></h2>
+    <p class="sub">Nous ne sommes pas une agence européenne délocalisée. Nous sommes ici, à Abidjan, et nous connaissons vos clients.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <div>
+          <h4>Livraison en 7 jours</h4>
+          <p>Pas de mois d'attente. Votre site est en ligne en une semaine maximum.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📱</div>
+        <div>
+          <h4>Optimisé pour mobile</h4>
+          <p>95% des Ivoiriens naviguent sur téléphone. Vos clients voient un site parfait sur leur écran.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💚</div>
+        <div>
+          <h4>Orange Money & Wave</h4>
+          <p>Vos clients paient comme ils en ont l'habitude. Intégration Mobile Money incluse.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔍</div>
+        <div>
+          <h4>Visible sur Google</h4>
+          <p>On optimise votre site pour que les clients vous trouvent quand ils cherchent vos services à Abidjan.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💬</div>
+        <div>
+          <h4>Support WhatsApp</h4>
+          <p>On reste disponibles par WhatsApp. Pas de ticket de support compliqué.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💰</div>
+        <div>
+          <h4>Paiement en 2 fois</h4>
+          <p>50% avant le démarrage, 50% à la livraison. Aucun risque pour vous.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TÉMOIGNAGES ===== -->
+<section class="section testi-bg" id="temoignages">
+  <div class="section-inner">
+    <div class="tag">Avis clients</div>
+    <h2>Ils nous ont fait confiance</h2>
+    <p class="sub">Des entrepreneurs ivoiriens qui ont transformé leur présence en ligne.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Mon cabinet médical reçoit maintenant des appels de nouveaux patients chaque semaine grâce au site. Livré en 6 jours comme promis, avec le paiement Orange Money intégré."</p>
+        <div class="testi-author">
+          <div class="avatar">👨‍⚕️</div>
+          <div><div class="author-name">Dr. Kouassi A.</div><div class="author-role">Cabinet médical · Cocody</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Avant Novaweb CI, mes clients me trouvaient uniquement par bouche à oreille. Maintenant j'ai des demandes par formulaire chaque jour. Excellent travail et très réactifs sur WhatsApp."</p>
+        <div class="testi-author">
+          <div class="avatar">👩‍💼</div>
+          <div><div class="author-name">Aminata K.</div><div class="author-role">Agence immobilière · Plateau</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"J'avais peur que ce soit compliqué mais ils ont tout géré. Je leur ai juste envoyé mes photos et mes infos par WhatsApp. Une semaine après, mon site était en ligne. Je recommande !"</p>
+        <div class="testi-author">
+          <div class="avatar">👨‍🍳</div>
+          <div><div class="author-name">Konan B.</div><div class="author-role">Restaurant · Marcory</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAIEMENT ===== -->
+<section class="section payment-section">
+  <div class="section-inner" style="text-align:center">
+    <div class="tag">Modes de paiement</div>
+    <h2>Payez comme vous voulez</h2>
+    <p class="sub" style="margin:0 auto 0">Nous acceptons tous les moyens de paiement disponibles en Côte d'Ivoire. Paiement en 2 fois possible sur toutes nos offres.</p>
+    <div class="pay-methods">
+      <div class="pay-card">
+        <div class="pay-icon">🟠</div>
+        <h4>Orange Money</h4>
+        <p>Transfert instantané</p>
+      </div>
+      <div class="pay-card">
+        <div class="pay-icon">💙</div>
+        <h4>Wave</h4>
+        <p>Sans frais</p>
+      </div>
+      <div class="pay-card">
+        <div class="pay-icon">🏦</div>
+        <h4>Virement bancaire</h4>
+        <p>Toutes banques CI</p>
+      </div>
+      <div class="pay-card">
+        <div class="pay-icon">💵</div>
+        <h4>Espèces</h4>
+        <p>Sur rendez-vous</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section">
+  <h2>Prêt à avoir votre site web ?</h2>
+  <p>Contactez-nous aujourd'hui. Votre site sera en ligne dans 7 jours.</p>
+  <div class="cta-btns">
+    <a href="https://wa.me/2250700000000" class="btn-main">💬 Démarrer sur WhatsApp</a>
+    <a href="#contact" class="btn-outline">📋 Remplir le formulaire</a>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="tag">Contact</div>
+        <h3>Parlons de votre projet</h3>
+        <p>Décrivez-nous votre business et ce que vous souhaitez. On vous répond dans la journée avec une offre personnalisée.</p>
+        <div class="c-item">
+          <div class="c-icon">💬</div>
+          <div class="c-text"><strong>WhatsApp (prioritaire)</strong><span>07 00 00 00 00 · Réponse sous 1h</span></div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📍</div>
+          <div class="c-text"><strong>Localisation</strong><span>Abidjan, Côte d'Ivoire<br>Déplacement possible</span></div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">⏰</div>
+          <div class="c-text"><strong>Disponibilité</strong><span>Lundi – Samedi : 8h – 20h<br>Dimanche : sur rendez-vous</span></div>
+        </div>
+        <div class="c-item">
+          <div class="c-icon">📧</div>
+          <div class="c-text"><strong>Email</strong><span>contact@novawebci.com</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form">
+          <h4>📋 Demande de devis gratuit</h4>
+          <div class="f-group">
+            <label>Votre nom</label>
+            <input type="text" placeholder="Ex : Kouamé Assiè">
+          </div>
+          <div class="f-group">
+            <label>Votre WhatsApp</label>
+            <input type="tel" placeholder="07 00 00 00 00">
+          </div>
+          <div class="f-group">
+            <label>Type de business</label>
+            <input type="text" placeholder="Ex : Salon de coiffure, Cabinet médical...">
+          </div>
+          <div class="f-group">
+            <label>Service souhaité</label>
+            <select>
+              <option>Site vitrine (150 000 FCFA)</option>
+              <option>Site + Mobile Money (220 000 FCFA)</option>
+              <option>Boutique en ligne (400 000 FCFA)</option>
+              <option>Maintenance mensuelle</option>
+              <option>Je ne sais pas encore</option>
+            </select>
+          </div>
+          <div class="f-group">
+            <label>Message (optionnel)</label>
+            <textarea placeholder="Décrivez votre projet en quelques mots..."></textarea>
+          </div>
+          <button class="f-submit" onclick="alert('Merci ! Nous vous contactons sur WhatsApp dans les prochaines heures. 🚀')">
+            Envoyer ma demande →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="f-brand">
+        <div class="logo">Nova<span>web</span> CI</div>
+        <p>Votre présence en ligne, notre mission. Agence web professionnelle basée à Abidjan, Côte d'Ivoire.</p>
+      </div>
+      <div class="f-links">
+        <h5>Services</h5>
+        <a href="#services">Site vitrine</a>
+        <a href="#services">Site + Mobile Money</a>
+        <a href="#services">Boutique en ligne</a>
+        <a href="#services">Maintenance</a>
+        <a href="#services">Référencement Google</a>
+      </div>
+      <div class="f-links">
+        <h5>Agence</h5>
+        <a href="#pourquoi">Pourquoi nous</a>
+        <a href="#processus">Notre processus</a>
+        <a href="#temoignages">Avis clients</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="f-links">
+        <h5>Contact rapide</h5>
+        <a href="https://wa.me/2250700000000">💬 WhatsApp</a>
+        <a href="mailto:contact@novawebci.com">📧 Email</a>
+        <a href="#">📘 Facebook</a>
+        <a href="#">📸 Instagram</a>
+        <a href="#">🎵 TikTok</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Novaweb CI — Tous droits réservés · Abidjan, Côte d'Ivoire</p>
+      <div class="f-badge">Votre présence en ligne, notre mission.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- BOUTON WHATSAPP FLOTTANT -->
+<a href="https://wa.me/2250700000000" class="float-wa" title="Nous contacter sur WhatsApp">💬</a>
+
+</body>
+</html>
